@@ -1,25 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define N 100
 
 int input_n(int *n)
 {
-    int x;
-    if (scanf("%d", &x) != 1)
+    if (scanf("%d", *&n) != 1 || *n < 0 || *n > N)
     {
         printf("Кол-во чисел введено неверно\n");
         return -1;
     }
     else
-        if (x == 0)
+        if (*n == 0)
         {
             printf("Пустой массив\n");
             return -2;
         }
-        else
-        {
-            *n = x;
-            return 0;
-        }
+    return 0;
 }
 
 int input_arr(int arr[N], int n)
@@ -47,6 +43,9 @@ int summ(int x)
 int check(int x)
 {
     int k = 0;
+    x = abs(x);
+    if (x == 0 || x == 1)
+        return -1;
     for (int i = 1; i < x; i++)
         if (x % i == 0)
             k++;
@@ -60,33 +59,34 @@ int insert(int arr[N], int *n1)
 {
     int k = 0;
     int n = *n1;
-    for (int i = 0; i < n; i++)
+    int i = 0;
+    while (i < n)
     {
         if (check(arr[i]) != -1)
         {
             for (int j = n - 1; j > i; j--)
                 arr[j + 1] = arr[j];
-            arr[i + 1] = check(arr[i]);
+            arr[i + 1] = summ(arr[i]);
+            i++;
             k++;
             n++;
         }
+        i++;
     }
     if (k == 0)
     {
         printf("Простых чисел в массиве нет\n");
         return -1;
     }
-    else
-    {
-        *n1 = n;
-        return 0;
-    }
+    *n1 = n;
+    return 0;
 }
 
 void print_arr(int arr[N], int n)
 {
     for (int i = 0; i < n; i++)
         printf("%d ", arr[i]);
+    printf("\n");
     return;
 }
 
@@ -98,18 +98,11 @@ int main(void)
         return 1;
     if (rc == -2)
         return 2;
-    else
-    {
-        int arr[N];
-        if (input_arr(arr, n) == -1)
-            return 3;
-        else
-        {
-            if (insert(arr, &n) == -1)
-                return 4;
-            else
-                print_arr(arr, n);
-        }
-    }
+    int arr[N];
+    if (input_arr(arr, n) == -1)
+        return 3;
+    if (insert(arr, &n) == -1)
+        return 4;
+    print_arr(arr, n);
     return 0;
 }
