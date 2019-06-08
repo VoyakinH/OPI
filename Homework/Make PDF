@@ -1,0 +1,4 @@
+#!/bin/bash
+cd documents/c/opi/homework
+doxygen Doxyfile
+wkhtmltopdf ./doxygen/html/func_8c.html docum.pdf

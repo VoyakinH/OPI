@@ -1,8 +1,16 @@
+///\file
 #include <stdio.h>
 #include <stdlib.h>
 #include "func.h"
 #define N 100
 
+/*!
+ *      \brief input_n
+ *      \param[out] n - размер массива
+ *      \return -1, если кол-во чисел введено неверно, -2, если массив пуст, иначе 0
+ *      Функция считывает размер массива с клавиатуры
+ *
+ */
 int input_n(int *n)
 {
     if (scanf("%d", *&n) != 1 || *n < 0 || *n > N)
@@ -19,6 +27,16 @@ int input_n(int *n)
     return 0;
 }
 
+/*!
+ *      \brief input_arr
+ *      \param[out] arr массив, в который записываются числа
+ *      \param[in] n количество чисел в массиве
+ *      \return -1, если ввод неправильный, иначе - 0
+ *
+ *      Функция заполняет массив с клавиатуры
+ *
+ *
+ */
 int input_arr(int arr[N], int n)
 {
     for (int i = 0; i < n; i++)
@@ -30,6 +48,14 @@ int input_arr(int arr[N], int n)
     return 0;
 }
 
+/*!
+ *      \brief summ
+ *      \param x целое число
+ *      \return s - сумма цифр простого числа
+ *
+ *      Функция ищет сумму цифр простого числа
+ *
+ */
 int summ(int x)
 {
     int s = 0;
@@ -41,6 +67,14 @@ int summ(int x)
     return s;
 }
 
+/*!
+ *      \brief check
+ *      \param x целое число
+ *      \return summ(x), если число простое, иначе -1
+ *
+ *      Функция проверяет простое ли число
+ *
+ */
 int check(int x)
 {
     int k = 0;
@@ -56,6 +90,14 @@ int check(int x)
         return -1;
 }
 
+/*!
+ *      \brief insert
+ *      \param arr - массив чисел, n1 - размер массива
+ *      \return -1, если простых чисел в массиве не, иначе 0
+ *
+ *      Функция вставляет сумму цифр простого числа после простого числа
+ *
+ */
 int insert(int arr[N], int *n1)
 {
     int k = 0;
@@ -83,6 +125,13 @@ int insert(int arr[N], int *n1)
     return 0;
 }
 
+/*!
+ *      \brief print_arr
+ *      \param n - количество чисел в массиве, arr - массив чисел
+ *
+ *      Функция выводит массив на экран
+ *
+ */
 void print_arr(int arr[N], int n)
 {
     for (int i = 0; i < n; i++)
