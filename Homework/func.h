@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #define N 100
 
+
 int input_n(int *n);
 int input_arr(int arr[N], int n);
 int summ(int x);

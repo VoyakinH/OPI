@@ -1,8 +1,15 @@
+///\file
 #include <stdio.h>
 #include <stdlib.h>
 #include "func.h"
 #define N 100
 
+/*!
+ *      \brief main
+ *
+ *      Функция вставляет сумм сумму цифр простого числа после простых чисел.
+ *
+ */
 int main()
 {
     int n, rc;

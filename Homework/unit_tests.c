@@ -29,7 +29,7 @@ int summ_must_return_correct_summ()
 int check_must_return_correct_result()
 {
     int a[4] = {0, 1, 13, 4};
-    int expected[4] = {-1, -1, 4, -1};
+    int expected[4] = {-1, 1, 4, -1};
     int actual;
     int count = 0;
     for (int i = 0; i < 4; i++)
