@@ -1,0 +1,10 @@
+#!/bin/bash
+cd documents/c/opi/homework
+for ((i=1; i<4; i++))
+do
+echo test/#$i:
+file_in=input_size_in_$i.txt
+file_out=input_size_out_$i.txt
+./input_size_tests.out < $file_in > input_size_act.txt
+diff -s input_size_act.txt $file_out
+done
